@@ -359,17 +359,16 @@ class IntroductionScreenState extends State<IntroductionScreen> {
                                     physics: BouncingScrollPhysics(),
                                     scrollDirection: Axis.horizontal,
                                     child: SingleChildScrollView(
-                                      SingleChildScrollView(
-                                        child: DotsIndicator(
-                                          reversed: widget.rtl,
-                                          dotsCount: getPagesLength(),
-                                          position: _currentPage,
-                                          decorator: widget.dotsDecorator,
-                                          onTap: widget.isProgressTap && !widget.freeze
-                                              ? (pos) => animateScroll(pos.toInt())
-                                              : null,
-                                        ),
+                                      child: DotsIndicator(
+                                        reversed: widget.rtl,
+                                        dotsCount: getPagesLength(),
+                                        position: _currentPage,
+                                        decorator: widget.dotsDecorator,
+                                        onTap: widget.isProgressTap && !widget.freeze
+                                            ? (pos) => animateScroll(pos.toInt())
+                                            : null,
                                       ),
+                                      
                                     ),
                                   ),  
                                 )
