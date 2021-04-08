@@ -353,26 +353,27 @@ class IntroductionScreenState extends State<IntroductionScreen> {
                   decoration: widget.dotsContainerDecorator,
                   child: Row(
                     children: [
-                      Expanded(
-                        flex: widget.skipFlex,
-                        child: _toggleBtn(skipBtn, isSkipBtn),
-                      ),
-                      Expanded(
-                        flex: widget.dotsFlex,
-                        child: Center(
-                          child: widget.isProgress
-                              ? DotsIndicator(
-                                  reversed: widget.rtl,
-                                  dotsCount: getPagesLength(),
-                                  position: _currentPage,
-                                  decorator: widget.dotsDecorator,
-                                  onTap: widget.isProgressTap && !widget.freeze
-                                      ? (pos) => animateScroll(pos.toInt())
-                                      : null,
+                      widget.isProgress
+                              ? Expanded(
+                                  child: SingleChildScrollView(
+                                    physics: BouncingScrollPhysics(),
+                                    scrollDirection: Axis.horizontal,
+                                    child: SingleChildScrollView(
+                                      SingleChildScrollView(
+                                        child: DotsIndicator(
+                                          reversed: widget.rtl,
+                                          dotsCount: getPagesLength(),
+                                          position: _currentPage,
+                                          decorator: widget.dotsDecorator,
+                                          onTap: widget.isProgressTap && !widget.freeze
+                                              ? (pos) => animateScroll(pos.toInt())
+                                              : null,
+                                        ),
+                                      ),
+                                    ),
+                                  ),  
                                 )
                               : const SizedBox(),
-                        ),
-                      ),
                       Expanded(
                         flex: widget.nextFlex,
                         child: isLastPage
