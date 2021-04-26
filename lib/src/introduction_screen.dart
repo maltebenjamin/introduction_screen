@@ -142,7 +142,7 @@ class IntroductionScreen extends StatefulWidget {
   final Widget? globalFooter;
 
   /// ScrollController of vertical SingleChildScrollView for every single page
-  final List<ScrollController?> scrollController;
+  final List<ScrollController?>? scrollController;
 
   /// Scroll/Axis direction of pages, can he horizontal or vertical
   ///
@@ -325,7 +325,7 @@ class IntroductionScreenState extends State<IntroductionScreen> {
                     ? widget.pages!
                         .map((p) => IntroPage(
                               page: p,
-                              scrollController: widget.scrollController[widget.pages.indexOf(p)],
+                              scrollController: widget.scrollController![widget.pages.indexOf(p)],
                               isTopSafeArea: widget.isTopSafeArea,
                               isBottomSafeArea: widget.isBottomSafeArea,
                             ))
